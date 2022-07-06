@@ -1,12 +1,10 @@
-package com.joyceworks.api.workflow.domain.translator
+package com.joyceworks.workflow.domain.translator
 
-import com.joyceworks.api.domain.aggregate.User
-import com.joyceworks.api.workflow.domain.vo.Approver
-import org.springframework.stereotype.Component
+import com.joyceworks.workflow.domain.vo.Approver
+import com.joyceworks.workflow.infrastruture.util.UserDTO
 
-@Component
 class ApproverTranslator {
-    fun translate(user: User): Approver {
+    fun translate(user: UserDTO): Approver {
         return Approver(
             user.id!!,
             user.department!!.id!!,

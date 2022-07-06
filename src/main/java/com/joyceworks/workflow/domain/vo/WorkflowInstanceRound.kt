@@ -1,7 +1,7 @@
-package com.joyceworks.api.workflow.domain.vo
+package com.joyceworks.workflow.domain.vo
 
-import com.joyceworks.api.infrastructure.util.JWTUtil
-import com.joyceworks.api.workflow.infrastructure.enums.WorkflowInstanceAction
+import com.joyceworks.workflow.infrastruture.enums.WorkflowInstanceAction
+import com.joyceworks.workflow.infrastruture.util.JWTUtil
 import java.util.*
 
 class WorkflowInstanceRound {

@@ -1,15 +1,13 @@
-package com.joyceworks.api.workflow.domain.aggregate
+package com.joyceworks.workflow.domain.aggregate
 
-import com.joyceworks.api.domain.aggregate.AggregateRoot
-import com.joyceworks.api.infrastructure.GeneralException
-import com.joyceworks.api.infrastructure.db.dataobject.UserDO
-import com.joyceworks.api.infrastructure.util.JWTUtil
-import com.joyceworks.api.infrastructure.util.form.FormDataUtils
-import com.joyceworks.api.workflow.application.command.WorkflowInstanceCreateCommand
-import com.joyceworks.api.workflow.domain.entity.WorkflowNode
-import com.joyceworks.api.workflow.domain.service.WorkflowInstanceDomainService
-import com.joyceworks.api.workflow.domain.vo.WorkflowInstanceRound
-import com.joyceworks.api.workflow.infrastructure.enums.WorkflowInstanceState
+import com.joyceworks.workflow.domain.entity.WorkflowNode
+import com.joyceworks.workflow.domain.service.WorkflowInstanceDomainService
+import com.joyceworks.workflow.domain.vo.WorkflowInstanceRound
+import com.joyceworks.workflow.command.WorkflowInstanceCreateCommand
+import com.joyceworks.workflow.infrastruture.GeneralException
+import com.joyceworks.workflow.infrastruture.enums.WorkflowInstanceState
+import com.joyceworks.workflow.infrastruture.util.FormDataUtils
+import com.joyceworks.workflow.infrastruture.util.JWTUtil
 import java.util.*
 
 class WorkflowInstance : AggregateRoot() {
@@ -17,7 +15,7 @@ class WorkflowInstance : AggregateRoot() {
     var dataId: Long? = null
     var rounds = mutableListOf<WorkflowInstanceRound>()
     var state: String? = null
-    var creator: UserDO? = null
+    var creator: Long? = null
     var attachmentId: String? = null
     var lastUpdatedAt: Date? = null
     var createdAt: Date? = null
@@ -121,7 +119,7 @@ class WorkflowInstance : AggregateRoot() {
         return pendingRound.logs.size > 1
     }
 
-    private fun isCreator() = creator!!.id == JWTUtil.getUserId()
+    private fun isCreator() = creator!! == JWTUtil.getUserId()
 
     private fun isProcessing() = state == WorkflowInstanceState.PROCESSING.value
 
@@ -140,7 +138,7 @@ class WorkflowInstance : AggregateRoot() {
                 state = WorkflowInstanceState.UNSUBMIT.value
                 dataId = command.dataId
                 workflowId = command.workflowId
-                creator = UserDO().apply { id = JWTUtil.getUserId() }
+                creator = JWTUtil.getUserId()
                 createdAt = Date()
             }
     }

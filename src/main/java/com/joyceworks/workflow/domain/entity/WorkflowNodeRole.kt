@@ -1,6 +1,4 @@
-package com.joyceworks.api.workflow.domain.entity
-
-import com.joyceworks.api.domain.entity.Entity
+package com.joyceworks.workflow.domain.entity
 
 class WorkflowNodeRole : Entity() {
     var roleId: Long? = null

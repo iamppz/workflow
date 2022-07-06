@@ -1,6 +1,6 @@
 package com.joyceworks.workflow.infrastruture.util
 
-class UserDomainService {
+class UserService {
     fun queryCurrent(): UserDTO {
         return UserDTO().apply {
 

@@ -2,7 +2,7 @@ package com.joyceworks.workflow.infrastruture.util
 
 import java.util.*
 
-class User {
+class UserDTO {
     var id: Long? = null
     var name: String? = null
     var mobile: String? = null
@@ -10,7 +10,7 @@ class User {
     var createdAt: Date? = null
     var disabled: Boolean? = null
     var roles: List<OptionDTO>? = null
-    var department: OptionDTO? = null
+    var department: DepartmentDTO? = null
     var creator: OptionDTO? = null
     var avatar: String? = null
     var bio: String? = null

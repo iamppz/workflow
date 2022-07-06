@@ -1,10 +1,8 @@
-package com.joyceworks.api.workflow.domain.service
+package com.joyceworks.workflow.domain.service
 
-import com.joyceworks.api.workflow.domain.adapter.UserAdapter
-import com.joyceworks.api.workflow.domain.vo.Approver
-import org.springframework.stereotype.Service
+import com.joyceworks.workflow.domain.adapter.UserAdapter
+import com.joyceworks.workflow.domain.vo.Approver
 
-@Service
 class WorkflowInstanceDomainService(
     private val userAdapter: UserAdapter,
 ) {

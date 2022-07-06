@@ -1,4 +1,4 @@
-package com.joyceworks.api.workflow.domain.vo
+package com.joyceworks.workflow.domain.vo
 
 import java.util.*
 

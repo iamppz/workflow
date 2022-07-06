@@ -1,5 +1,5 @@
-package com.joyceworks.api.domain.aggregate
+package com.joyceworks.workflow.domain.aggregate
 
-import com.joyceworks.api.domain.entity.Entity
+import com.joyceworks.workflow.domain.entity.Entity
 
 open class AggregateRoot : Entity()

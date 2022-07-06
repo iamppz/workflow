@@ -1,6 +1,6 @@
-package com.joyceworks.api.workflow.domain.repository
+package com.joyceworks.workflow.domain.repository
 
-import com.joyceworks.api.workflow.domain.aggregate.WorkflowInstance
+import com.joyceworks.workflow.domain.aggregate.WorkflowInstance
 
 interface WorkflowInstanceRepository {
     fun delete(id: Long)

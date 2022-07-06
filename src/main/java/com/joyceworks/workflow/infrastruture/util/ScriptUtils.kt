@@ -1,4 +1,4 @@
-package com.joyceworks.api.infrastructure.util
+package com.joyceworks.workflow.infrastruture.util
 
 import java.util.function.Predicate
 import javax.script.ScriptEngine

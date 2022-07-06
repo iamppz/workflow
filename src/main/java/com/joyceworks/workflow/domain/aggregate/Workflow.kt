@@ -1,10 +1,9 @@
-package com.joyceworks.api.workflow.domain.aggregate
+package com.joyceworks.workflow.domain.aggregate
 
-import com.joyceworks.api.domain.aggregate.AggregateRoot
-import com.joyceworks.api.infrastructure.util.ScriptUtils
-import com.joyceworks.api.workflow.domain.entity.WorkflowNode
-import com.joyceworks.api.workflow.domain.entity.WorkflowTransition
-import com.joyceworks.api.workflow.infrastructure.enums.WorkflowNodeState
+import com.joyceworks.workflow.domain.entity.WorkflowNode
+import com.joyceworks.workflow.domain.entity.WorkflowTransition
+import com.joyceworks.workflow.infrastruture.enums.WorkflowNodeState
+import com.joyceworks.workflow.infrastruture.util.ScriptUtils
 import org.apache.commons.lang3.StringUtils
 
 class Workflow : AggregateRoot() {

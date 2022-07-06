@@ -1,4 +1,4 @@
-package com.joyceworks.api.workflow.infrastructure.enums;
+package com.joyceworks.workflow.infrastruture.enums;
 
 public enum WorkflowInstanceState {
   UNSUBMIT("unsubmit"),

@@ -1,9 +1,8 @@
-package com.joyceworks.api.workflow.domain.entity
+package com.joyceworks.workflow.domain.entity
 
-import com.joyceworks.api.domain.entity.Entity
-import com.joyceworks.api.infrastructure.GeneralException
-import com.joyceworks.api.workflow.domain.service.WorkflowInstanceDomainService
-import com.joyceworks.api.workflow.infrastructure.enums.WorkflowNodeState
+import com.joyceworks.workflow.domain.service.WorkflowInstanceDomainService
+import com.joyceworks.workflow.infrastruture.GeneralException
+import com.joyceworks.workflow.infrastruture.enums.WorkflowNodeState
 
 class WorkflowNode : Entity() {
     var name: String? = null

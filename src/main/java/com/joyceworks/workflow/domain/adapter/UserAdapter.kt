@@ -1,13 +1,11 @@
-package com.joyceworks.api.workflow.domain.adapter
+package com.joyceworks.workflow.domain.adapter
 
-import com.joyceworks.api.domain.service.UserDomainService
-import com.joyceworks.api.workflow.domain.translator.ApproverTranslator
-import com.joyceworks.api.workflow.domain.vo.Approver
-import org.springframework.stereotype.Component
+import com.joyceworks.workflow.domain.translator.ApproverTranslator
+import com.joyceworks.workflow.domain.vo.Approver
+import com.joyceworks.workflow.infrastruture.util.UserService
 
-@Component
 class UserAdapter(
-    private val domainService: UserDomainService,
+    private val domainService: UserService,
     private val translator: ApproverTranslator
 ) {
     fun getApprover(): Approver {
