@@ -1,9 +1,9 @@
 package com.joyceworks.workflow.infrastruture.util
 
+import org.apache.commons.lang3.NotImplementedException
+
 class UserService {
     fun queryCurrent(): UserDTO {
-        return UserDTO().apply {
-
-        }
+        throw NotImplementedException("")
     }
 }

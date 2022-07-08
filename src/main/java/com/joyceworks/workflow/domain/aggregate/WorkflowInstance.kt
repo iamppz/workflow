@@ -8,6 +8,7 @@ import com.joyceworks.workflow.infrastruture.GeneralException
 import com.joyceworks.workflow.infrastruture.enums.WorkflowInstanceState
 import com.joyceworks.workflow.infrastruture.util.FormDataUtils
 import com.joyceworks.workflow.infrastruture.util.JWTUtil
+import com.joyceworks.workflow.infrastruture.util.SnowFlake
 import java.util.*
 
 class WorkflowInstance : AggregateRoot() {
