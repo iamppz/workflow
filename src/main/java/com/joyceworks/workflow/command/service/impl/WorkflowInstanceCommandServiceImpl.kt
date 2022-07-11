@@ -6,7 +6,7 @@ import com.joyceworks.workflow.command.service.WorkflowInstanceCommandService
 import com.joyceworks.workflow.domain.aggregate.WorkflowInstance
 import com.joyceworks.workflow.domain.repository.WorkflowInstanceRepository
 import com.joyceworks.workflow.domain.service.WorkflowInstanceDomainService
-import com.joyceworks.workflow.infrastruture.db.repository.WorkflowRepository
+import com.joyceworks.workflow.domain.repository.WorkflowRepository
 import com.joyceworks.workflow.infrastruture.util.FormDataUtils
 
 class WorkflowInstanceCommandServiceImpl(
@@ -26,6 +26,7 @@ class WorkflowInstanceCommandServiceImpl(
         val instance = repository.findById(command.id!!)
         val workflow = workflowRepository.find(instance.workflowId)
         instance.forward(command.message, workflow, domainService, formDataUtils)
+        repository.save(instance)
     }
 
     /**
@@ -37,16 +38,19 @@ class WorkflowInstanceCommandServiceImpl(
         val instance = repository.findById(id)
         val workflow = workflowRepository.find(instance.workflowId)
         instance.submit(workflow, domainService, formDataUtils)
+        repository.save(instance)
     }
 
     override fun cancelSubmit(id: Long) {
         val instance = repository.findById(id)
         instance.cancelSubmit()
+        repository.save(instance)
     }
 
     override fun reject(command: WorkflowInstanceApproveCommand) {
         val instance = repository.findById(command.id!!)
         val workflow = workflowRepository.find(instance.workflowId)
         instance.backward(workflow, command.message, domainService)
+        repository.save(instance)
     }
 }

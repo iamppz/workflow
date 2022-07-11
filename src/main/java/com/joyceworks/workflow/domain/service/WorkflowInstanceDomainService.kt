@@ -2,10 +2,11 @@ package com.joyceworks.workflow.domain.service
 
 import com.joyceworks.workflow.domain.adapter.UserAdapter
 import com.joyceworks.workflow.domain.vo.Approver
-import org.apache.commons.lang3.NotImplementedException
 
-class WorkflowInstanceDomainService {
+class WorkflowInstanceDomainService(
+    private val userAdapter: UserAdapter,
+) {
     fun getApprover(): Approver {
-        throw NotImplementedException("")
+        return userAdapter.getApprover()
     }
 }

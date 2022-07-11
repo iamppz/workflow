@@ -2,31 +2,51 @@ package com.joyceworks.workflow
 
 import com.joyceworks.workflow.command.WorkflowInstanceApproveCommand
 import com.joyceworks.workflow.command.WorkflowInstanceCreateCommand
-import com.joyceworks.workflow.command.service.WorkflowInstanceCommandService
 import com.joyceworks.workflow.command.service.impl.WorkflowInstanceCommandServiceImpl
+import com.joyceworks.workflow.domain.adapter.UserAdapter
+import com.joyceworks.workflow.domain.aggregate.Workflow
+import com.joyceworks.workflow.domain.aggregate.WorkflowInstance
 import com.joyceworks.workflow.domain.repository.WorkflowInstanceRepository
+import com.joyceworks.workflow.domain.repository.WorkflowRepository
 import com.joyceworks.workflow.domain.service.WorkflowInstanceDomainService
-import com.joyceworks.workflow.infrastruture.db.repository.WorkflowInstanceRepositoryImpl
-import com.joyceworks.workflow.infrastruture.db.repository.WorkflowRepository
+import com.joyceworks.workflow.domain.translator.ApproverTranslator
 import com.joyceworks.workflow.infrastruture.util.FormDataUtils
+import com.joyceworks.workflow.infrastruture.util.UserService
 
 /**
  * Hello world!
  */
 object App {
-    private val repository = WorkflowRepository()
-    private val instanceRepository: WorkflowInstanceRepository = WorkflowInstanceRepositoryImpl()
-    private val domainService = WorkflowInstanceDomainService()
-    private val formDataUtils = FormDataUtils()
-    private val service: WorkflowInstanceCommandService = WorkflowInstanceCommandServiceImpl(
-        instanceRepository,
-        domainService,
-        formDataUtils,
-        repository
-    )
 
     @JvmStatic
     fun main(args: Array<String>) {
+        val approverTranslator = ApproverTranslator()
+        val userService = UserService()
+        val userAdapter = UserAdapter(userService, approverTranslator)
+        val workflowInstanceRepository = object : WorkflowInstanceRepository {
+            override fun save(instance: WorkflowInstance) {
+                TODO("Not yet implemented")
+            }
+
+            override fun findById(id: Long): WorkflowInstance {
+                TODO("Not yet implemented")
+            }
+        }
+        val formDataUtils = FormDataUtils()
+        val workflowRepository = object : WorkflowRepository {
+            override fun find(id: Long?): Workflow {
+                return Workflow()
+            }
+        }
+
+        val domainService = WorkflowInstanceDomainService(userAdapter)
+        val service = WorkflowInstanceCommandServiceImpl(
+            workflowInstanceRepository,
+            domainService,
+            formDataUtils,
+            workflowRepository
+        )
+
         println("Hello World!")
         val command = WorkflowInstanceCreateCommand()
         command.workflowId = 1L
